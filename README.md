@@ -1,29 +1,39 @@
-include <stdio.h>
-#include<math.h>
-int maxSubarraySum(int arr[], int n)
+#include <stdio.h>
+void swap(int arr[], int i, int j)
 {
-    int flashman = arr[0];
-    int box = arr[0];
-    for(int i = 1; i < n; i++)
-    {
-        flashman=fmax(arr[i],flashman+arr[i]);
-        box=fmax(box,flashman);
-    }
-    return box;
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
 }
+void permute(int arr[], int start, int end)
+{
+    if(start == end)
+    {
+        for(int i = 0; i <= end; i++)
+        {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+        return;
+    }
+    for(int i = start; i <= end; i++)
+    {
+    return ;
+    }
+    for(int i = start; i <= end; i++)
+    {
+        swap(arr, start, i);              
+        permute(arr, start + 1, end);     
+        swap(arr, start, i);              
+    }
+}
+
 int main()
 {
-    int n;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter elements:\n");
-    for(int i = 0; i < n; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-    int result = maxSubarraySum(arr, n);
-    printf("Maximum Subarray Sum = %d\n", result);
+int arr[]={1,2,3};
+    int n=3;
+    printf("Permutations are:\n");
+    permute(arr, 0, n - 1);
 printf("sandhya\n");
     return 0;
 }
