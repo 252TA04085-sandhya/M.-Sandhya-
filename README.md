@@ -1,19 +1,43 @@
-#include<stdio.h>
-int findHCF(int a,int b)
-{
-if(b==0)
-return a;
-return findHCF(b,a%b);
-}
+include <stdio.h>
+
 int main()
 {
-int a,b;
-printf("enter two numbers");
-scanf("%d %d",&a,&b);
-int h=findHCF(a,b);
-int l=(a*b)/h;
-printf("HCF=%d\n",h);
-printf("LCM=%d\n",l);
-printf("sandhya\n");
-return 0;
+    int n, i, j, temp;
+
+    printf("Enter n value: ");
+    scanf("%d", &n);
+
+    int a[n];
+
+    printf("Enter elements:\n");
+    for(i = 0; i < n; i++) {
+        scanf("%d", &a[i]);   
+    }
+
+    for(i = 0; i < n; i++)
+    {
+        int min = i;  
+
+        for(j = i + 1; j < n; j++)
+        {
+            if(a[j] < a[min]) 
+            {
+                min = j;
+            }
+        }
+
+        temp = a[i];
+        a[i] = a[min];   
+        a[min] = temp;
+    }
+
+    printf("Sorted elements:\n");
+    for(i = 0; i < n; i++)
+    {
+        printf("%d ", a[i]);
+    }
+
+    printf("\nSandhya\n");
+
+    return 0;
 }
