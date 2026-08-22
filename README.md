@@ -1,43 +1,37 @@
 #include <stdio.h>
 
-int main() {
-    int n, i, j;
-    float marks[5], total, avg;
-    char grade;
+void generateSubsets(int arr[], int n, int index, int subset[], int size) {
+    
+    if(index == n) {
+        printf("{ ");
+        for(int i = 0; i < size; i++) {
+            printf("%d ", subset[i]);
+        }
+        printf("}\n");
+        return;
+    }
+    subset[size] = arr[index];
+    generateSubsets(arr, n, index + 1, subset, size + 1);
 
-    printf("Enter number of students: ");
+    
+    generateSubsets(arr, n, index + 1, subset, size);
+}
+
+int main() {
+    int n;
+
+    printf("Enter number of elements: ");
     scanf("%d", &n);
 
-    for (i = 1; i <= n; i++) {
-        printf("\n--- Student %d ---\n", i);
+    int arr[n], subset[n];
 
-        total = 0;
-
-        // Input marks for 5 subjects
-        for (j = 0; j < 5; j++) {
-            printf("Enter marks for subject %d: ", j + 1);
-            scanf("%f", &marks[j]);
-            total += marks[j];
-        }
-
-        // Calculate average
-        avg = total / 5;
-
-        // Grade assignment
-        if (avg >= 90)
-            grade = 'A';
-        else if (avg >= 80)
-            grade = 'B';
-        else if (avg >= 70)
-            grade = 'C';
-        else
-            grade = 'D';   // Below 70
-
-        // Display result
-        printf("\nTotal Marks = %.2f", total);
-        printf("\nAverage Marks = %.2f", avg);
-        printf("\nGrade = %c\n", grade);
+    printf("Enter elements:\n");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
+    printf("\nSubsets are:\n");
+    generateSubsets(arr, n, 0, subset, 0);
+printf("sandhya\n");
     return 0;
 }
