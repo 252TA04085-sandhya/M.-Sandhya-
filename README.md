@@ -1,37 +1,30 @@
 #include <stdio.h>
-
-void generateSubsets(int arr[], int n, int index, int subset[], int size) {
-    
-    if(index == n) {
-        printf("{ ");
-        for(int i = 0; i < size; i++) {
-            printf("%d ", subset[i]);
-        }
-        printf("}\n");
-        return;
-    }
-    subset[size] = arr[index];
-    generateSubsets(arr, n, index + 1, subset, size + 1);
-
-    
-    generateSubsets(arr, n, index + 1, subset, size);
-}
+#include <string.h>
 
 int main() {
-    int n;
+    char str1[100], str2[100];
+    int count[256] = {0};
 
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
+    scanf("%s %s", str1, str2);
 
-    int arr[n], subset[n];
-
-    printf("Enter elements:\n");
-    for(int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+    if (strlen(str1) != strlen(str2)) {
+        printf("Not Anagram\n");
+        return 0;
     }
 
-    printf("\nSubsets are:\n");
-    generateSubsets(arr, n, 0, subset, 0);
-printf("sandhya\n");
+    for (int i = 0; str1[i]; i++) {
+        count[(int)str1[i]]++;
+        count[(int)str2[i]]--;
+    }
+
+    for (int i = 0; i < 256; i++) {
+        if (count[i] != 0) {
+            printf("Not Anagram\n");
+            return 0;
+        }
+    }
+
+    printf("Anagram\n");
+    printf("sandhya\n");
     return 0;
 }
