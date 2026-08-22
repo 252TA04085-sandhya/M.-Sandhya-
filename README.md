@@ -1,23 +1,18 @@
 #include<stdio.h>
 int main()
 {
-int n,i,key;
-printf("enter number of array");
+int n;
+printf("enter number of terms");
 scanf("%d",&n);
-int a[n];
-for(i=0;i<n;i++)
-scanf("%d",&a[i]);
-scanf("%d",&key);
-int f=0;
-for(i=0;i<n;i++)
+int a=0 ,b=1,c;
+printf("Fibonacci series:/n");
+for(int i=1;i<=n;i++)
 {
-if(a[i]==key)
-{
-f=1;
-printf("found at %d",i);
-break;
+printf("%d",a);
+c=a+b;
+a=b;
+b=c;
 }
-}
-if(f==0)printf("not found");
 printf("sandhya\n");
+return 0;
 }
