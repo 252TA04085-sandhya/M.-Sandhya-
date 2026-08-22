@@ -1,30 +1,22 @@
-#include <stdio.h>
-#include <string.h>
-
-int main() {
-    char str1[100], str2[100];
-    int count[256] = {0};
-
-    scanf("%s %s", str1, str2);
-
-    if (strlen(str1) != strlen(str2)) {
-        printf("Not Anagram\n");
-        return 0;
-    }
-
-    for (int i = 0; str1[i]; i++) {
-        count[(int)str1[i]]++;
-        count[(int)str2[i]]--;
-    }
-
-    for (int i = 0; i < 256; i++) {
-        if (count[i] != 0) {
-            printf("Not Anagram\n");
-            return 0;
-        }
-    }
-
-    printf("Anagram\n");
-    printf("sandhya\n");
-    return 0;
+##include<stdio.h>
+int main()
+{
+int n,i,j,temp;
+scanf("%d",&n);
+int a[n];
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+for(i=0;i<n-1;i++)
+for(j=0;j<n-i-1;j++)
+{
+if(a[j]>a[j+1])
+{
+temp=a[j];
+a[j]=a[j+1];
+a[j+1]=temp;
+}
+}
+for(i=0;i<n;i++)
+printf("%d",a[i]);
+printf("sandhya\n");
 }
