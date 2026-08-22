@@ -1,29 +1,19 @@
-include<stdio.h>
+#include<stdio.h>
+int findHCF(int a,int b)
+{
+if(b==0)
+return a;
+return findHCF(b,a%b);
+}
 int main()
 {
-int n,key;
-printf("enter n");
-scanf("%d",&n);
-printf("enter elements");
-int a[n];
-for(int i=0;i<n;i++)
-scanf("%d",&a[i]);
-printf("enter key");
-scanf("%d",&key);
-int low=0,high=n-1,f=0;
-while(low<=high)
-{
-int mid=(low+high)/2;
-if(a[mid]==key)
-{
-printf("found at %d",mid);
-f=1;break;
-}
-else if(a[mid]<key)
-low=mid+1;
-else
-high=mid-1;
-}
-if(f==0)printf("not found");
+int a,b;
+printf("enter two numbers");
+scanf("%d %d",&a,&b);
+int h=findHCF(a,b);
+int l=(a*b)/h;
+printf("HCF=%d\n",h);
+printf("LCM=%d\n",l);
 printf("sandhya\n");
+return 0;
 }
